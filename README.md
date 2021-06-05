@@ -1,2 +1,2 @@
 # arxiv-daily-notice
-Get arxiv paper.
+Get arxiv notice.
