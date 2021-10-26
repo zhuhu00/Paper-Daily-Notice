@@ -6,7 +6,7 @@ on:
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
   schedule:
-    - cron:  "* 12 * * *"  # Runs every minute of 12th hour
+    - cron:  "0 13 * * mon-fri"  # Runs every minute of 12th hour
 env:
 
   GITHUB_USER_NAME: zhuhu00 # your github id
