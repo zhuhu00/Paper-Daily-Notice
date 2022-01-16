@@ -4,13 +4,24 @@ from __future__ import division
 from __future__ import print_function
 from __future__ import unicode_literals
 
+import argparse
+
 from bs4 import BeautifulSoup as bs
 import urllib.request
 
 from github_issue import make_github_issue
 from config import NEW_SUB_URL, KEYWORD_LIST
 
-def main():
+def main(args):
+#     处理参数，实际只需要TOKEN
+    parser = argparse.ArgumentParser(description='Get the TOKEN for github issue')
+    parser.add_argument('-t','--token', help='The github TOKEN', required=True)
+#     parser.add_argument('-b','--bar', help='Description for bar argument', required=True)
+    args = vars(parser.parse_args())
+    
+    TOKEN = args.token
+    
+    
     page = urllib.request.urlopen(NEW_SUB_URL)
     soup = bs(page)
     content = soup.body.find("div", {'id': 'content'})
