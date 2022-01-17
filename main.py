@@ -5,6 +5,7 @@ from __future__ import print_function
 from __future__ import unicode_literals
 
 import argparse
+import os
 
 from bs4 import BeautifulSoup as bs
 import urllib.request
@@ -69,4 +70,5 @@ if __name__ == '__main__':
     parser.add_argument('-t','--token', help='The github TOKEN', required=True, default='Token Needed!')
     args = vars(parser.parse_args())
     print(args['token'])
+    print(os.environ)
     main(args)
