@@ -2,7 +2,8 @@
 
 ## TODO
 
-- [ ] 不显示github的token
+- [x] 不显示github的token
+  在secret中添加token的编号，便能够在每次github action中传入token了。
 
 
 

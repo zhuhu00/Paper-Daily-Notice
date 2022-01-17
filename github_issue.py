@@ -6,9 +6,9 @@ from __future__ import unicode_literals
 
 import json
 import requests
-from config import USERNAME, TOKEN, REPO_OWNER, REPO_NAME
+from config import USERNAME, REPO_OWNER, REPO_NAME
 
-def make_github_issue(title, body=None, assignee=USERNAME, closed=False, labels=[]):
+def make_github_issue(title, body=None, assignee=USERNAME, closed=False, labels=[], TOKEN="TOKEN_needed"):
     # Create an issue on github.com using the given parameters
     # Url to create issues via POST
     url = 'https://api.github.com/repos/%s/%s/import/issues' % (REPO_OWNER, REPO_NAME)

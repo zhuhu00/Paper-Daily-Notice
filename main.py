@@ -13,14 +13,9 @@ from github_issue import make_github_issue
 from config import NEW_SUB_URL, KEYWORD_LIST
 
 def main(args):
-#     处理参数，实际只需要TOKEN
-    parser = argparse.ArgumentParser(description='Get the TOKEN for github issue')
-    parser.add_argument('-t','--token', help='The github TOKEN', required=True)
-#     parser.add_argument('-b','--bar', help='Description for bar argument', required=True)
-    args = vars(parser.parse_args())
+
     
-    TOKEN = args.token
-    
+    # TOKEN = args.token
     
     page = urllib.request.urlopen(NEW_SUB_URL)
     soup = bs(page)
@@ -65,8 +60,12 @@ def main(args):
                         paper['abstract'])
             full_report = full_report + report + '\n'
 
-    make_github_issue(title=issue_title, body=full_report, labels=keyword_list)
+    make_github_issue(title=issue_title, body=full_report, labels=keyword_list, TOKEN=args['token'])
     print("end")
 
 if __name__ == '__main__':
+    #     处理参数，实际只需要TOKEN
+    parser = argparse.ArgumentParser(description='Get the TOKEN for github issue')
+    parser.add_argument('-t','--token', help='The github TOKEN', required=True, default='Token Needed!')
+    args = vars(parser.parse_args())
     main(args)
