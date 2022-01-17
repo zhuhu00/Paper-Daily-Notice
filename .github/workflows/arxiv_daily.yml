@@ -8,10 +8,8 @@ on:
   schedule:
     - cron:  "0 13 * * mon-fri"  # Runs every minute of 12th hour
 env:
-#   JD_COOKIE: ${{ secrets.JD_COOKIE }}
-#   JD_DUAL_COOKIE: ${{ secrets.JD_DUAL_COOKIE }}
+
   TOKEN: ${{ secrets.ISSUE_TOKEN }}
-#   UPLOAD_BESULT_DIR: true
   GITHUB_USER_NAME: zhuhu00 # your github id
   GITHUB_USER_EMAIL: zhuhu00@foxmail.com # your email address
   
@@ -41,7 +39,7 @@ jobs:
           
       - name: Run daily arxiv 
         run: |
-          python main.py --token=TOKEN
+          TOKEN=${{ secrets.ISSUE_TOKEN }} python main.py --token=TOKEN
 
       # - name: Push new cv-arxiv-daily.md
       #   uses: github-actions-x/commit@v2.8
