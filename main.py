@@ -61,7 +61,7 @@ def main(args):
                         paper['abstract'])
             full_report = full_report + report + '\n'
 
-    make_github_issue(title=issue_title, body=full_report, labels=keyword_list, TOKEN=args['token'])
+    make_github_issue(title=issue_title, body=full_report, labels=keyword_list, TOKEN=os.environ['TOKEN'])
     print("end")
 
 if __name__ == '__main__':
