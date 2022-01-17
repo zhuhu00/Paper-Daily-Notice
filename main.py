@@ -71,4 +71,4 @@ if __name__ == '__main__':
     args = vars(parser.parse_args())
     print(args['token'])
     print(os.environ['TOKEN'])
-#     main(args)
+    main(args)
