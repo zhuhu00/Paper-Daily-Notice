@@ -1,15 +1,11 @@
 # Get-daily-arxiv-notice
 
-## TODO
+# 如何使用
+1. `fork`本repository，然后在Setting->Security->Secrets->Actions下，创建一个`Repository secrets`, 并记下名字为`ISSUE_TOKEN`,这个TOKEN上需要先做github账号下申请的。然后粘贴到`ISSUE_TOKEN`。
+2. 修改`config.py`下，repo的名字，以及github名字等，可查看后面的内容。
+3. 可先在本地运行，成功后github的action会每天自动运行
 
-- [x] 不显示github的token
-  在secret中添加token的编号，便能够在每次github action中传入token了。
-
-
-
-
-
-You can get daily arxiv notification with pre-defined keywords as [here](https://github.com/kobiso/daily-arxiv-noti/issues).
+You can get daily arxiv notification with pre-defined keywords as [here](https://github.com/zhuhu00/arxiv-daily-notice/issues).
 
 Arxiv.org announces new submissions every day on fixed time as informed [here](https://arxiv.org/help/submit).
 
@@ -29,18 +25,17 @@ $ pip install -r requirements.txt
 
 ## Usage
 
-#### 1. Create a Repo
+### 1. Create a Repo
 
 Create a repository to get notification in your github.
 
-#### 2. Set Config
+### 2. Set Config
 
 Revise `config.py` as your perferences.
 
 ```python
 # Authentication for user filing issue (must have read/write access to repository to add issue to)
 USERNAME = 'changeme'
-TOKEN = 'changeme'
 
 # The repository to add this issue to
 REPO_OWNER = 'changeme'

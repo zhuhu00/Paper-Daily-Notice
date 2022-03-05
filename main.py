@@ -69,6 +69,6 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Get the TOKEN for github issue')
     parser.add_argument('-t','--token', help='The github TOKEN', required=True, default='Token Needed!')
     args = vars(parser.parse_args())
-    print(args['token'])
+    # print(args['token'])
     print(os.environ['TOKEN'])
     main(args)
