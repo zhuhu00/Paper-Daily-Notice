@@ -19,7 +19,7 @@ def main(args):
     # TOKEN = args.token
     
     page = urllib.request.urlopen(NEW_SUB_URL)
-    soup = bs(page)
+    soup = bs(page, 'html.parser')
     content = soup.body.find("div", {'id': 'content'})
 
     issue_title = content.find("h3").text
@@ -70,5 +70,5 @@ if __name__ == '__main__':
     parser.add_argument('-t','--token', help='The github TOKEN', required=True, default='Token Needed!')
     args = vars(parser.parse_args())
     # print(args['token'])
-    print(os.environ['TOKEN'])
+    # print(os.environ['TOKEN'])
     main(args)
