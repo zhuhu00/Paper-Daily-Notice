@@ -11,7 +11,7 @@ from bs4 import BeautifulSoup as bs
 import urllib.request
 
 from github_issue import make_github_issue
-from config import NEW_SUB_URL, KEYWORD_LIST
+from config import NEW_SUB_URL, KEYWORD_LIST, USERNAME
 
 def main(args):
 
@@ -48,8 +48,7 @@ def main(args):
             if keyword.lower() in paper['abstract'].lower():
                 keyword_dict[keyword].append(paper)
 
-# <details>
-#   <summary>什么是iuap design</summary>
+
     full_report = '<details> \n <summary>'+issue_title+'</summary> \n'
     for keyword in keyword_list:
         full_report = full_report + '## Keyword: ' + keyword + '\n'
@@ -67,18 +66,13 @@ def main(args):
     # create an md file using full_report, with the name of date, and upload it to github
     with open('report.md', 'w') as f:
         f.write(full_report)
-        
-    if 'GITHUB' in os.environ:
-        USERNAME, TOKEN = os.environ['GITHUB'].split(',')
-    make_github_issue(title=issue_title, body=full_report, assignee=USERNAME, TOKEN=TOKEN, labels=keyword_list)
 
     # create an md file using full_report, with the name of date, and upload it to github
-    with open('report.md', 'w') as f:
+    # create a date string
+    import datetime
+    filename = datetime.datetime.now().strftime("%Y-%m-%d") + '.md'
+    with open(filename, 'a+') as f:
         f.write(full_report)
-        
-    if 'GITHUB' in os.environ:
-        USERNAME, TOKEN = os.environ['GITHUB'].split(',')
-    # make_github_issue(title=issue_title, body=full_report, assignee=USERNAME, TOKEN=TOKEN, labels=keyword_list)
 
     make_github_issue(title=issue_title, body=full_report, assignee=USERNAME,labels=keyword_list, TOKEN=os.environ['TOKEN'])
     print("end")
