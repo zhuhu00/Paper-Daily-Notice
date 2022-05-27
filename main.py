@@ -48,7 +48,9 @@ def main(args):
             if keyword.lower() in paper['abstract'].lower():
                 keyword_dict[keyword].append(paper)
 
-    full_report = ''
+# <details>
+#   <summary>什么是iuap design</summary>
+    full_report = '<details> \n <summary>'+issue_title+'</summary> \n'
     for keyword in keyword_list:
         full_report = full_report + '## Keyword: ' + keyword + '\n'
 
@@ -60,8 +62,17 @@ def main(args):
                 .format(paper['title'], paper['authors'], paper['subjects'], paper['main_page'], paper['pdf'],
                         paper['abstract'])
             full_report = full_report + report + '\n'
+    full_report = full_report + '</details>'
 
-    make_github_issue(title=issue_title, body=full_report, labels=keyword_list, TOKEN=os.environ['TOKEN'])
+    # create an md file using full_report, with the name of date, and upload it to github
+    with open('report.md', 'w') as f:
+        f.write(full_report)
+        
+    if 'GITHUB' in os.environ:
+        USERNAME, TOKEN = os.environ['GITHUB'].split(',')
+    # make_github_issue(title=issue_title, body=full_report, assignee=USERNAME, TOKEN=TOKEN, labels=keyword_list)
+
+    make_github_issue(title=issue_title, body=full_report, assignee=USERNAME,labels=keyword_list, TOKEN=os.environ['TOKEN'])
     print("end")
 
 if __name__ == '__main__':
