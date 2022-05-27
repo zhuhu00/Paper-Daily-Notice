@@ -13,6 +13,7 @@ def make_github_issue(title, body=None, assignee=USERNAME, closed=False, labels=
     # Url to create issues via POST
     url = 'https://api.github.com/repos/%s/%s/issues' % (REPO_OWNER, REPO_NAME)
 
+    # session = requests.Session()
     # Headers
     headers = {
         "Authorization": "token %s" % TOKEN,
@@ -31,6 +32,7 @@ def make_github_issue(title, body=None, assignee=USERNAME, closed=False, labels=
 
 
     # Add the issue to our repository
+    # response = requests.request("POST", url, data=payload, headers=headers)
     response = requests.request("POST", url, data=payload, headers=headers)
     if response.status_code == 201:
         print ('Successfully created Issue "%s"' % title)

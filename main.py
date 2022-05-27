@@ -48,7 +48,6 @@ def main(args):
             if keyword.lower() in paper['abstract'].lower():
                 keyword_dict[keyword].append(paper)
 
-
     full_report = '<details> \n <summary>'+issue_title+'</summary> \n'
     for keyword in keyword_list:
         full_report = full_report + '## Keyword: ' + keyword + '\n'
@@ -62,10 +61,6 @@ def main(args):
                         paper['abstract'])
             full_report = full_report + report + '\n'
     full_report = full_report + '</details>'
-
-    # create an md file using full_report, with the name of date, and upload it to github
-    with open('report.md', 'w') as f:
-        f.write(full_report)
 
     # create an md file using full_report, with the name of date, and upload it to github
     # create a date string
