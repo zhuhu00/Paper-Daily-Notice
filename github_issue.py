@@ -17,8 +17,8 @@ def make_github_issue(title, body=None, assignee=USERNAME, closed=False, labels=
     # Headers
     headers = {
         "Authorization": "token %s" % TOKEN,
-        # "Accept": "application/vnd.github.golden-comet-preview+json"
-        "Accept": "application/vnd.github.v3+json"
+        "Accept": "application/vnd.github.golden-comet-preview+json"
+        # "Accept": "application/vnd.github.v3+json"
     }
 
     # Create our issue

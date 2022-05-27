@@ -48,7 +48,7 @@ def main(args):
             if keyword.lower() in paper['abstract'].lower():
                 keyword_dict[keyword].append(paper)
 
-    full_report = '<details> \n <summary>'+issue_title+'</summary> \n'
+    full_report = issue_title+'\n'
     for keyword in keyword_list:
         full_report = full_report + '## Keyword: ' + keyword + '\n'
 
@@ -60,13 +60,13 @@ def main(args):
                 .format(paper['title'], paper['authors'], paper['subjects'], paper['main_page'], paper['pdf'],
                         paper['abstract'])
             full_report = full_report + report + '\n'
-    full_report = full_report + '</details>'
 
     # create an md file using full_report, with the name of date, and upload it to github
     # create a date string
     import datetime
     filename = datetime.datetime.now().strftime("%Y-%m-%d") + '.md'
-    with open(filename, 'a+') as f:
+    print(filename)
+    with open(filename, 'w+') as f:
         f.write(full_report)
 
     make_github_issue(title=issue_title, body=full_report, assignee=USERNAME,labels=keyword_list, TOKEN=os.environ['TOKEN'])
