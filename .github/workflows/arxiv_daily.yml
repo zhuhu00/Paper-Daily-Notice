@@ -6,7 +6,7 @@ on:
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
   schedule:
-    - cron:  "0 12 * * mon-fri"  # Runs every day in 12
+    - cron:  "0 * * * mon-fri"  # Runs every day in 12
 env:
 
   TOKEN: ${{ secrets.ISSUE_TOKEN }}
@@ -27,16 +27,16 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
         
-      - name: Set up Python Env
-        uses: actions/setup-python@v1
+      - name: Set up Python 3.8
+        uses: actions/setup-python@v2
         with:
-          python-version: 3.6        
+          python-version: 3.8        
 
       - name: Install dependencies
         run: |
-          python -m pip install --upgrade pip
-          pip install -r requirements.txt
-      
+          python3 -m pip install --upgrade pip
+          python3 -m pip install -r requirements.txt
+          
       - name: Run daily arxiv 
         env:
           GITHUB: ${{ secrets.GITHUB }}
