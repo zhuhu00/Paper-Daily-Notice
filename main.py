@@ -70,6 +70,14 @@ def main(args):
         
     if 'GITHUB' in os.environ:
         USERNAME, TOKEN = os.environ['GITHUB'].split(',')
+    make_github_issue(title=issue_title, body=full_report, assignee=USERNAME, TOKEN=TOKEN, labels=keyword_list)
+
+    # create an md file using full_report, with the name of date, and upload it to github
+    with open('report.md', 'w') as f:
+        f.write(full_report)
+        
+    if 'GITHUB' in os.environ:
+        USERNAME, TOKEN = os.environ['GITHUB'].split(',')
     # make_github_issue(title=issue_title, body=full_report, assignee=USERNAME, TOKEN=TOKEN, labels=keyword_list)
 
     make_github_issue(title=issue_title, body=full_report, assignee=USERNAME,labels=keyword_list, TOKEN=os.environ['TOKEN'])
