@@ -66,7 +66,7 @@ def main(args):
     # create an md file using full_report, with the name of date, and upload it to github
     # create a date string
     import datetime
-    filename = datetime.datetime.now().strftime("%Y-%m-%d") + '.md'
+    filename = datetime.datetime.now().strftime("%Y-%m-%d") + '-Arxiv-Daily-Paper.md'
     print(filename)
     with open(filename, 'w+') as f:
         f.write(full_report)
