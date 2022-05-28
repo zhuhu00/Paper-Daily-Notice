@@ -1,7 +1,7 @@
 # Get-daily-arxiv-notice
 
-> 不知道什么原因，不能更新issue了，本地运行返回401，action也不能正常更新issue，不过还是会更新到markdown里面的，每天论文都是xxxx-xx-xx-Arxiv-Daily-Paper.md
-> 以及，如果感觉以后论文太多翻的麻烦，可以在个人主页看：[https://zhuhu00.github.io/blog/](https://zhuhu00.github.io/blog/)，这里会更新每天的arxiv有关SLAM等的文章
+> 不知道什么原因，不能更新issue了，本地运行返回401，action也不能正常更新issue，不过还是会更新到markdown里面的，每天论文都是`xxxx-xx-xx-Arxiv-Daily-Paper.md`
+> 以及，如果感觉以后论文太多翻的麻烦，可以在个人主页看：[**https://zhuhu00.github.io/blog/**](https://zhuhu00.github.io/blog/)，这里会更新每天的arxiv有关SLAM等的文章
 
 # 如何使用
 1. `fork`本repository，然后在Setting->Security->Secrets->Actions下，创建一个`Repository secrets`, 并记下名字为`ISSUE_TOKEN`,这个TOKEN上需要先做github账号下申请的。然后粘贴到`ISSUE_TOKEN`。
