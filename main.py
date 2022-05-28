@@ -11,7 +11,7 @@ from bs4 import BeautifulSoup as bs
 import urllib.request
 
 from github_issue import make_github_issue
-from config import NEW_SUB_URL, KEYWORD_LIST, USERNAME
+from config import NEW_SUB_URL, KEYWORD_LIST
 
 def main(args):
 
@@ -48,7 +48,7 @@ def main(args):
             if keyword.lower() in paper['abstract'].lower():
                 keyword_dict[keyword].append(paper)
 
-    full_report = issue_title+'\n'
+    full_report = ''
     for keyword in keyword_list:
         full_report = full_report + '## Keyword: ' + keyword + '\n'
 
@@ -61,15 +61,7 @@ def main(args):
                         paper['abstract'])
             full_report = full_report + report + '\n'
 
-    # create an md file using full_report, with the name of date, and upload it to github
-    # create a date string
-    import datetime
-    filename = datetime.datetime.now().strftime("%Y-%m-%d") + '.md'
-    print(filename)
-    with open(filename, 'w+') as f:
-        f.write(full_report)
-
-    make_github_issue(title=issue_title, body=full_report,labels=keyword_list, TOKEN=os.environ['TOKEN'])
+    make_github_issue(title=issue_title, body=full_report, labels=keyword_list, TOKEN=os.environ['TOKEN'])
     print("end")
 
 if __name__ == '__main__':

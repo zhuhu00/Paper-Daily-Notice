@@ -30,23 +30,22 @@ def make_github_issue(title, body=None, assignee=USERNAME, closed=False, labels=
 
     # Add the issue to our repository
     response = requests.request("POST", url, data=payload, headers=headers)
-    if response.status_code == 201:
+    if response.status_code == 202:
         print ('Successfully created Issue "%s"' % title)
-        print('Response status code:', response.status_code)
-
+        print(response.status_code)
     else:
         print ('Could not create Issue "%s"' % title)
         print ('Response:', response.content)
-        print('Response status code:', response.status_code)
+        print(response.status_code)
+
 
 if __name__ == '__main__':
     title = 'Pretty title'
     body = 'Beautiful body'
-    assignee = 'zhuhu00'
+    assignee = USERNAME
     closed = False
     labels = [
         "imagenet", "image retrieval"
     ]
-    TOKEN = ''
 
-    make_github_issue(title, body, assignee, closed, labels, TOKEN)
+    make_github_issue(title, body, assignee, closed, labels)
