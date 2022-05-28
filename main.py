@@ -66,12 +66,17 @@ def main(args):
     # create an md file using full_report, with the name of date, and upload it to github
     # create a date string
     import datetime
-    filename = datetime.datetime.now().strftime("%Y-%m-%d") + '-Arxiv-Daily-Paper.md'
+    filename = './Arxiv_Daily_Notice/'+datetime.datetime.now().strftime("%Y-%m-%d") + '-Arxiv-Daily-Paper.md'
+    filename_readme = './Arxiv_Daily_Notice/README.md'
     print(filename)
     with open(filename, 'w+') as f:
         f.write(full_report)
 
-    make_github_issue(title=issue_title, body=full_report,labels=keyword_list, TOKEN=os.environ['TOKEN'])
+    with open(filename_readme, 'w+') as f:
+        f.write(full_report)
+
+    make_github_issue(title=issue_title, body=full_report,labels=keyword_list, 
+    TOKEN=os.environ['TOKEN'])
     print("end")
 
 if __name__ == '__main__':
