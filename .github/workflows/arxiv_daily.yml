@@ -40,4 +40,16 @@ jobs:
       - name: Run daily arxiv 
         env:
           GITHUB: ${{ secrets.GITHUB }}
-        run: TOKEN=${{ secrets.ISSUE_TOKEN }} python main.py --token=TOKEN}
+        run: TOKEN=${{ secrets.ISSUE_TOKEN }} python main.py --token=TOKEN
+      
+      # ============================================
+      # TODO [√] 更新仓库数据
+      # ============================================
+      - name: Setup GIT user
+        uses: fregante/setup-git-user@v1
+
+      - name: Push done work
+        run: |
+          git add --all
+          git commit -m "Automated deployment"
+          git push --force origin main
