@@ -15,4 +15,4 @@ REPO_NAME = 'arxiv-daily-notice'
 NEW_SUB_URL = 'https://arxiv.org/list/cs/new'
 
 # Keywords to search
-KEYWORD_LIST = ["SLAM","odometry","livox","loam","lidar","loop detection","autonomous driving","mapping","localization","transformer", "nerf"]
+KEYWORD_LIST = ["SLAM","odometry","livox","loam","lidar","loop detection", "nerf","mapping","localization","transformer","autonomous driving"]
