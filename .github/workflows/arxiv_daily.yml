@@ -6,7 +6,7 @@ on:
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
   schedule:
-    - cron:  "0 0 * * mon-fri"  # Runs every day in 12
+    - cron:  "0 3 * * mon-fri"  # Runs every day in 12
 env:
 
   TOKEN: ${{ secrets.ISSUE_TOKEN }}
